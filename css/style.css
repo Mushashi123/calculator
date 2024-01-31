@@ -26,3 +26,69 @@ body {
 button {
   cursor: pointer;
 }
+
+/* || Calculator */
+
+main {
+  height: 100vh;
+  background-color: #e5e5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  background-color: var(--COLOR-DARK-900);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 6px 6px 23px -5px #000, -1px -1px 16px -6px #000;
+}
+
+.screen {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: right;
+  padding: 10px;
+  gap: 15px;
+}
+
+.input {
+  color: var(--COLOR-LIGHT-GREY);
+  font-size: 0.9rem;
+}
+
+.output {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  width: 276px;
+}
+
+.keys {
+  border: none;
+  background-color: var(--COLOR-DARK-800);
+  color: #fff;
+  width: calc(
+    25% - 12px
+  ); /*25 % will keep 4 flex items per column, and -12px px is reducting total gap*/
+  flex: 1 1 auto;
+  aspect-ratio: 1/1; /*to make sure height = width*/
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.keys--mint {
+  background-color: var(--COLOR-MINT);
+}
+
+sup {
+  font-size: 0.9rem;
+}
