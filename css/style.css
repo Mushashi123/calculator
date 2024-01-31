@@ -2,6 +2,15 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
+/* || Global Variables  */
+
+:root {
+  --COLOR-DARK-900: #1e1e1e;
+  --COLOR-DARK-800: #2e2e2e;
+  --COLOR-MINT: #34ac8f;
+  --COLOR-LIGHT-GREY: #c6c6c6;
+}
+
 /* || General Styles  */
 
 * {
