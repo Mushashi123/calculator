@@ -10,37 +10,40 @@
     <main>
       <div class="calculator">
         <div class="screen">
-          <div class="input">12 + 7 / 3</div>
-          <div class="output">15</div>
+          <div class="input"></div>
+          <div class="output">0</div>
         </div>
         <div class="keyboard">
-          <button type="button" class="keys keys--mint">
-            <span>+/-</span>
+          <button type="button" class="keys keys--mint" data-key="unary_minus">
+            +/-
           </button>
-          <button type="button" class="keys keys--mint">x<sup>y</sup></button
-          ><button type="button" class="keys keys--mint">AC</button
-          ><button type="button" class="keys keys--mint">
+          <button type="button" class="keys keys--mint" data-key="%">%</button
+          ><button type="button" class="keys keys--mint" data-key="clear">
+            AC</button
+          ><button type="button" class="keys keys--mint" data-key="backspace">
             <img
               src="./assets/images/backspace.svg"
               alt="backspace icon"
               width="60%"
+              data-key="backspace"
             /></button
-          ><button type="button" class="keys">7</button
-          ><button type="button" class="keys">8</button
-          ><button type="button" class="keys">9</button
-          ><button type="button" class="keys keys--mint">/</button
-          ><button type="button" class="keys">4</button
-          ><button type="button" class="keys">5</button
-          ><button type="button" class="keys">6</button
-          ><button type="button" class="keys keys--mint">&Cross;</button
-          ><button type="button" class="keys">1</button
-          ><button type="button" class="keys">2</button
-          ><button type="button" class="keys">3</button
-          ><button type="button" class="keys keys--mint">-</button
-          ><button type="button" class="keys">0</button
-          ><button type="button" class="keys">.</button
-          ><button type="button" class="keys">=</button
-          ><button type="button" class="keys keys--mint">+</button>
+          ><button type="button" class="keys" data-key="7">7</button
+          ><button type="button" class="keys" data-key="8">8</button
+          ><button type="button" class="keys" data-key="9">9</button
+          ><button type="button" class="keys keys--mint" data-key="/">/</button
+          ><button type="button" class="keys" data-key="4">4</button
+          ><button type="button" class="keys" data-key="5">5</button
+          ><button type="button" class="keys" data-key="6">6</button
+          ><button type="button" class="keys keys--mint" data-key="*">
+            &Cross;</button
+          ><button type="button" class="keys" data-key="1">1</button
+          ><button type="button" class="keys" data-key="2">2</button
+          ><button type="button" class="keys" data-key="3">3</button
+          ><button type="button" class="keys keys--mint" data-key="-">-</button
+          ><button type="button" class="keys" data-key="0">0</button
+          ><button type="button" class="keys" data-key=".">.</button
+          ><button type="button" class="keys" data-key="=">=</button
+          ><button type="button" class="keys keys--mint" data-key="+">+</button>
         </div>
       </div>
     </main>

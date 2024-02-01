@@ -90,7 +90,3 @@ main {
 .keys--mint {
   background-color: var(--COLOR-MINT);
 }
-
-sup {
-  font-size: 0.9rem;
-}
