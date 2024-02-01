@@ -5,6 +5,7 @@ const CLEAR = "clear";
 
 // || DOM elements
 const outputScreen = document.querySelector(".output");
+const inputScreen = document.querySelector(".input");
 const keyboard = document.querySelector(".keyboard");
 
 keyboard.addEventListener("click", (e) => {
@@ -18,6 +19,11 @@ keyboard.addEventListener("click", (e) => {
 
   // change UI based on user's input
   changeUI(userInput);
+
+  //if user presses = evalute whole expression and display output
+  if (userInput === "=") {
+    evaluateExpression();
+  }
 });
 
 function changeUI(userInput) {
@@ -87,10 +93,11 @@ function inputOperator(operator) {
   //operator cannot be written if last input is operator itself, we can find it out , casue operator are wrapped by white space and if last character is white space it's operator
   //removing white space bwteen operator can break the code
 
-  //   operator not allowed if there is already an operator or if there is no operand
+  //   operator not allowed if there is already an operator or if there is no operand or if is operand ends with decimal
   if (
     outputScreen.textContent[outputScreen.textContent.length - 1] === " " ||
-    outputScreen.textContent === ""
+    outputScreen.textContent === "" ||
+    outputScreen.textContent[outputScreen.textContent.length - 1] === "."
   ) {
     return;
   }
@@ -139,6 +146,7 @@ function inputBackSpace() {
 
 function inputClear() {
   outputScreen.textContent = "0";
+  inputScreen.textContent = "";
 }
 
 function inputUnaryMinus() {
@@ -160,4 +168,80 @@ function inputUnaryMinus() {
   individualInput[individualInput.length - 1] = lastvalue;
 
   outputScreen.textContent = individualInput.join(" ");
+}
+
+function evaluateExpression() {
+  let expression = outputScreen.textContent;
+
+  //   split each individual operator and operand based on white space
+  const expressionArray = expression.split(" ");
+  let output = null;
+
+  //   if expression array has less than 3 itmes or ends with an operator(well have "" empty string as last item in that case) dont evaluate
+  if (
+    expressionArray.length < 3 ||
+    expressionArray[expressionArray.length - 1] === ""
+  ) {
+    return;
+  }
+
+  //   operate with two operand and one operator at a time until array length becomes one, and the last item is our output
+
+  while (expressionArray.length !== 1) {
+    let operandA = parseFloat(expressionArray.shift());
+    let operator = expressionArray.shift();
+    let operandB = parseFloat(expressionArray.shift());
+
+    let accumuator = null;
+
+    switch (operator) {
+      case "+":
+        accumuator = sum(operandA, operandB);
+        break;
+      case "-":
+        accumuator = difference(operandA, operandB);
+        break;
+      case "⨯":
+        accumuator = product(operandA, operandB);
+        break;
+      case "/":
+        accumuator = quotien(operandA, operandB);
+        break;
+      case "%":
+        accumuator = percentage(operandA, operandB);
+        break;
+    }
+
+    expressionArray.unshift(accumuator);
+    // if number has franctional part , diaply decimal points
+    if (accumuator % 1 !== 0) {
+      output = accumuator.toFixed(1);
+    } else {
+      output = accumuator;
+    }
+  }
+
+  displayOutput(expression, output);
+}
+
+function displayOutput(previousExpression, output) {
+  inputScreen.textContent = previousExpression;
+  outputScreen.textContent = output;
+}
+
+function sum(a, b) {
+  return a + b;
+}
+function difference(a, b) {
+  return a - b;
+}
+function product(a, b) {
+  return a * +b;
+}
+function quotien(a, b) {
+  return a / b;
+}
+
+function percentage(a, b) {
+  return (a / 100) * b;
 }
