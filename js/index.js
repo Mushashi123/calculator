@@ -128,12 +128,13 @@ function inputOperator(operator) {
 }
 
 function inputBackSpace() {
-  // if last charcter is a number or decimal remove it
+  // if last charcter is a number or decimal or unary - remove it
   if (
     !isNaN(
       parseInt(outputScreen.textContent[outputScreen.textContent.length - 1])
     ) ||
-    outputScreen.textContent[outputScreen.textContent.length - 1] === "."
+    outputScreen.textContent[outputScreen.textContent.length - 1] === "." ||
+    outputScreen.textContent[outputScreen.textContent.length - 1] === "-"
   ) {
     const arrayOfStrings = outputScreen.textContent.split("");
     arrayOfStrings.pop();
