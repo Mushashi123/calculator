@@ -159,6 +159,11 @@ function inputBackSpace() {
 
     outputScreen.textContent = arrayOfStrings.join("");
   }
+
+  //if output screen gets empty while using backspace then clear the input expression
+  if (outputScreen.textContent === "") {
+    inputScreen.textContent = "";
+  }
 }
 
 function inputClear() {
