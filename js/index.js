@@ -26,6 +26,22 @@ keyboard.addEventListener("click", (e) => {
   }
 });
 
+document.addEventListener("keydown", (e) => {
+  e.preventDefault();
+  let userInput = e.key;
+
+  // change ui and lowercase the input to match backspace with Backspace
+  changeUI(userInput.toLowerCase());
+});
+
+document.addEventListener("keyup", (e) => {
+  e.preventDefault();
+  if (e.key.toLowerCase() !== "enter") {
+    return;
+  }
+  evaluateExpression();
+});
+
 function changeUI(userInput) {
   switch (userInput) {
     case "0":
